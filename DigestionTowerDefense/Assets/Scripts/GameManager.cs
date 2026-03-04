@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject enemy = Instantiate(enemyPrefabs[unitLevel]);
         enemy.SetActive(false);
+        return enemy;
     }
     
 }
