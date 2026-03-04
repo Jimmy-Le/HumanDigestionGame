@@ -12,7 +12,8 @@ public abstract class EntityScript : MonoBehaviour
     [SerializeField] public int nutrition;                  // The value of an entity. Enemies: Currency dropped on death. Towers: Cost 
     [SerializeField] public int factionID;                  // 0: Towers, 1: Enemies
     [SerializeField] public int unitLevel;                  // Enemies: The type of enemy. Towers: Upgrades (This won't be implemented in this version)
-
+    [SerializeField] public bool isPiercing;                // If an entity has Piercing, they can ignore armor when dealing dmg
+    
     protected virtual void Awake()
     {
         health = maxHealth;                                 // Set the current Health to be the Max Health
