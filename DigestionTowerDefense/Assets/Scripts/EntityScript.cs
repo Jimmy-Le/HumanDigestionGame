@@ -4,7 +4,7 @@ public abstract class EntityScript : MonoBehaviour
 {
     // Attributes 
     [Header("Entity Stats")]
-    [SerializeField] public string name;                    // Name of the entity
+    [SerializeField] public string entityName;              // Name of the entity
     [SerializeField] public int maxHealth;                  // Maximum Health of an entity (Possibly used for displaying it)
     [SerializeField] public int health;                     // Hit Points of the entity
     [SerializeField] public int attack;                     // The amount of damage the entity does to another entity
@@ -12,7 +12,6 @@ public abstract class EntityScript : MonoBehaviour
     [SerializeField] public int nutrition;                  // The value of an entity. Enemies: Currency dropped on death. Towers: Cost 
     [SerializeField] public int factionID;                  // 0: Towers, 1: Enemies
     [SerializeField] public int unitLevel;                  // Enemies: The type of enemy. Towers: Upgrades (This won't be implemented in this version)
-
 
     protected virtual void Awake()
     {
