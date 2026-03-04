@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
      */
     public bool ModifyNutrition(int nutritionModifier)
     {
-        tempNutrition = nutrition + nutritionModifier;
+        int tempNutrition = nutrition + nutritionModifier;
         if (nutritionModifier >= 0)
         {
             nutrition = tempNutrition;
