@@ -9,12 +9,12 @@ public class EnemyScript : EntityScript
     {
         
         // Set the level of the next enemy.
-        // If the enemy died, it will appear as a smaller version (harder to digest)
+        // If the enemy died, it will appear as a higher level version (harder to digest)
         // If the enemy escaped, it will appear in the same form
-        int nextEnemyLevel = hasEscaped ? unitLevel : unitLevel - 1;
+        int nextEnemyLevel = hasEscaped ? unitLevel : unitLevel + 1;
 
-        // If the enemy has been completely killed, delete and return
-        if (nextEnemyLevel < 0)
+        // If there is no more levels
+        if (nextEnemyLevel >= GameManager.instance.enemyTypes)
         {
             Destroy(this.gameObject);
             return;
@@ -50,9 +50,12 @@ public class EnemyScript : EntityScript
         Destroy(this.gameObject);
     }
     
-    public void SetEscaped()
+	/***
+	* If an enemy escapes, it will appear in the next stage in the same form.
+	*/
+    public void SetEscaped(bool hasEscaped)
     {
-        hasEscaped = true;
+        this.hasEscaped = hasEscaped;
     }
     
 }

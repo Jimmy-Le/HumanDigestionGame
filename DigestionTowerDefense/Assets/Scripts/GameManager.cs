@@ -7,8 +7,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Prefabs")] 
     [SerializeField] public GameObject[] enemyPrefabs;
+    public int enemyTypes;						// Length of the enemy Prefab array
 
-    public int enemyTypes;
+	[Header("Mobs")]
+	[SerializeField] public Transform enemySpawnFolder;
+	[SerializeField] public int startingEnemies = 20;
+
     
     
     // Game Stats
@@ -21,11 +25,14 @@ public class GameManager : MonoBehaviour
     public List<GameObject> enemies;            // List of enemies for the current Level
     public List<GameObject> nextEnemies;        // List of enemies for the next Level
     
+
+
     
     void Awake()
     {
         instance = this;
         enemyTypes = enemyPrefabs.Length;
+		GenerateInitialEnemy();
         DontDestroyOnLoad(this);
     }
 
@@ -36,6 +43,7 @@ public class GameManager : MonoBehaviour
     public GameObject GenerateEnemy(int unitLevel)
     {
         GameObject enemy = Instantiate(enemyPrefabs[unitLevel]);
+		enemy.transform.SetParent(enemySpawnFolder);
         enemy.SetActive(false);
         return enemy;
     }
@@ -57,6 +65,17 @@ public class GameManager : MonoBehaviour
             return false;
         }
     }
+
+	public void GenerateInitialEnemy()
+	{
+		for(int i = 0; i < startingEnemies; i++)
+		{
+			int randomEnemy = Random.Range(0, enemyTypes);
+			GameObject enemy = GenerateEnemy(randomEnemy);
+			enemies.Add(enemy);
+			
+		}
+	}
     
     
     
