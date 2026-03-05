@@ -56,11 +56,11 @@ TagManager:
   - name: Enemy
     uniqueID: 308764947
     locked: 0
-  - name: Attack
-    uniqueID: 2280824627
-    locked: 0
   - name: Tower
     uniqueID: 1640964425
+    locked: 0
+  - name: Attack
+    uniqueID: 2280824627
     locked: 0
   m_RenderingLayers:
   - Default

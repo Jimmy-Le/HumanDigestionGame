@@ -12,6 +12,11 @@ public class TargettingScript : MonoBehaviour
     private Transform targettedObject;                      // The Transform of the Target
 
     private float attackCooldown = 0f;
+
+    void Start()
+    {
+        StartCoroutine(SearchTargets());
+    }
     
     void Update()
     {
@@ -19,7 +24,9 @@ public class TargettingScript : MonoBehaviour
         {
             if (attackCooldown <= 0f)
             {
-                attackPrefab.GetComponent<AttackScript>().Shoot(targettedObject);
+				
+                GameObject attack = Instantiate(attackPrefab, transform.position, transform.rotation);
+                attack.GetComponent<AttackScript>().Shoot(targettedObject);
                 attackCooldown = 1f / tower.attackSpeed;
             }
         }
@@ -30,7 +37,7 @@ public class TargettingScript : MonoBehaviour
     /***
      * This function will Search for targets every 0.2 seconds
      */
-    private IEnumerable searchTargets()
+    private IEnumerator SearchTargets()
     {
         while (isSearching)
         {
