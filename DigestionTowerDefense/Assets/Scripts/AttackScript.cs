@@ -7,8 +7,12 @@ public abstract class AttackScript : MonoBehaviour
 	[SerializeField] public bool attackActive = true;
 
 
-    // The child script must define how they control the movement 
-    public abstract void Shoot(Transform destination);
+    // The child script should define how they control the movement of the attack
+	// For melee attacks, this is not necessary
+    public virtual void Shoot(Transform destination)
+	{
+    	Debug.Log("Shoot");
+	}
 
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {

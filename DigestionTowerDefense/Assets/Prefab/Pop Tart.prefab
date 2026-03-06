@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScript
   entityName: Pop Tart
-  maxHealth: 10
-  health: 10
+  maxHealth: 50
+  health: 50
   attack: 1
   armor: 1
   nutrition: 40

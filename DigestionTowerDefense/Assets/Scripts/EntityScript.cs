@@ -50,6 +50,11 @@ public abstract class EntityScript : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+	public virtual void SetMaxHealth(int newMaxHealth)
+	{
+		maxHealth = newMaxHealth;
+	}
     
     
 }

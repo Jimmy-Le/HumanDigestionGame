@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;     // Create a Singleton Instance to make this accessible to all game objects
 
     [Header("Prefabs")] 
+	[SerializeField] public GameObject[] towerPrefabs;
     [SerializeField] public GameObject[] enemyPrefabs;
     public int enemyTypes;						// Length of the enemy Prefab array
 
@@ -26,6 +27,9 @@ public class GameManager : MonoBehaviour
     public List<GameObject> nextEnemies;        // List of enemies for the next Level
     
 
+	// UI Tower Selection
+	[SerializeField] public GameObject selectedTower;
+	[SerializeField] public int selectedTowerID = 0;
 
     
     void Awake()
@@ -65,7 +69,12 @@ public class GameManager : MonoBehaviour
             return false;
         }
     }
-
+	
+	/***
+	 * This function will generate random enemies at the start of Level 1
+	 * and add them to the list of current enemies
+	 * 
+	 */
 	public void GenerateInitialEnemy()
 	{
 		for(int i = 0; i < startingEnemies; i++)
@@ -77,6 +86,11 @@ public class GameManager : MonoBehaviour
 		}
 	}
     
+	
+	public void ChooseTower(int towerID)
+	{
+		selectedTowerID = towerID;
+	}
     
     
 }

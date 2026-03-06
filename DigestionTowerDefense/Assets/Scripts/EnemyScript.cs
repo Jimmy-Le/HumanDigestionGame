@@ -41,9 +41,10 @@ public class EnemyScript : EntityScript
             }
             
         }
-        // If it did escape, it will add an enemy of the same level to the next enemies list
+        // If it did escape, it will add an enemy of the same level, but with the same HP to the next enemies list
         else
         {
+			nextEnemy.GetComponent<EntityScript>().SetMaxHealth(this.health);
             GameManager.instance.nextEnemies.Add(nextEnemy);
         }
         
