@@ -26,8 +26,10 @@ public class EnemyScript : EntityScript
         if (!hasEscaped)
         {
             int randomChance = Random.Range(0, 3);
+			
+			GameManager.instance.ModifyNutrition(nutrition);
 
-            if (randomChance == 1)
+            if (randomChance <= 1)
             {
                 int currentDirection = this.gameObject.GetComponent<EnemyMovementScript>().direction;
                 nextEnemy.GetComponent<EnemyMovementScript>().SetDirection(currentDirection);

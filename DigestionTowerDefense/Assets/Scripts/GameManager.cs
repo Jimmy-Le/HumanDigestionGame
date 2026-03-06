@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     public bool ModifyNutrition(int nutritionModifier)
     {
         int tempNutrition = nutrition + nutritionModifier;
-        if (nutritionModifier >= 0)
+        if (tempNutrition >= 0)
         {
             nutrition = tempNutrition;
             return true;
@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
 	public void ChooseTower(int towerID)
 	{
 		selectedTowerID = towerID;
+		selectedTower = towerPrefabs[towerID];
 	}
     
     

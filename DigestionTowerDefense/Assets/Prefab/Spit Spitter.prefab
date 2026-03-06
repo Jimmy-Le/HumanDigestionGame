@@ -105,7 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d213dec204812f23ab7d3d2c683e901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerScript
+  entityID: 1
   entityName: Spit Spitter
+  sprite: {fileID: 0}
   maxHealth: 10
   health: 10
   attack: 3

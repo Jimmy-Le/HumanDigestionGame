@@ -4,7 +4,9 @@ public abstract class EntityScript : MonoBehaviour
 {
     // Attributes 
     [Header("Entity Stats")]
+	[SerializeField] public int entityID;					// ID of the entity, for towers, make sure it matches the array of TowerPrefabs in game Manager
     [SerializeField] public string entityName;              // Name of the entity
+	[SerializeField] public Sprite sprite;					// Icons for entity
     [SerializeField] public int maxHealth;                  // Maximum Health of an entity (Possibly used for displaying it)
     [SerializeField] public int health;                     // Hit Points of the entity
     [SerializeField] public int attack;                     // The amount of damage the entity does to another entity

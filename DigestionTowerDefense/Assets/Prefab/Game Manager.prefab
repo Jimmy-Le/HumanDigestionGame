@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   towerPrefabs:
-  - {fileID: 778192465720374322, guid: f82b5f2ecd21a09d3a935783e82d6c8b, type: 3}
   - {fileID: 8220143850057882442, guid: c3111e6255527cec9a6a1a78e30a9d23, type: 3}
+  - {fileID: 778192465720374322, guid: f82b5f2ecd21a09d3a935783e82d6c8b, type: 3}
   enemyPrefabs:
   - {fileID: 4998228578766955095, guid: 396d27471bf76ffb2910386c7b4112c9, type: 3}
   - {fileID: 4021148920305097531, guid: c5c2c0469ce060048bfbe377bd7ca661, type: 3}
@@ -105,3 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52dc4d55d6f26446870e35b19121225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerSpawnerScript
+  inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  cam: {fileID: 0}
+  selectedTile: {fileID: 0}

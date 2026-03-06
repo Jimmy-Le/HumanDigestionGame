@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed2c4033130815978433b89244938d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeAttackScript
-  attacker: {fileID: 7055685260183043071}
+  attacker: {fileID: 0}
   targetTag: Enemy
   attackActive: 1
 --- !u!1 &8370687264271266101
@@ -154,7 +154,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6231603908130641793}
   - component: {fileID: 5523104793054846451}
-  - component: {fileID: 7055685260183043071}
   - component: {fileID: 5787011874419834344}
   m_Layer: 7
   m_Name: Chomper
@@ -238,31 +237,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &7055685260183043071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370687264271266101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d213dec204812f23ab7d3d2c683e901, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerScript
-  entityName: Chomper
-  maxHealth: 20
-  health: 20
-  attack: 5
-  armor: 5
-  nutrition: 75
-  factionID: 0
-  unitLevel: 0
-  isPiercing: 0
-  attackSpeed: 1
-  placability: 1
-  range: 2
-  refund: 20
 --- !u!114 &5787011874419834344
 MonoBehaviour:
   m_ObjectHideFlags: 0

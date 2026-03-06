@@ -66,6 +66,9 @@ public class TowerSpawnerScript : MonoBehaviour
             Debug.Log("Building Tower");
             Instantiate(GameManager.instance.selectedTower, selectedTile.transform.position, selectedTile.transform.rotation, selectedTile.transform);
             selectedTile.isOccupied = true;
+            // Reduce the amount of nutrition from the cost
+            GameManager.instance.ModifyNutrition(-(GameManager.instance.selectedTower.GetComponent<TowerScript>()
+                .nutrition));
         }
         else
         {
@@ -96,6 +99,7 @@ public class TowerSpawnerScript : MonoBehaviour
         if (chosenTower.placability != selectedTile.placability)
         {
             Debug.Log("Tower is not placable");
+			// Debug.Log("Chosen Tower Placability: "+ chosenTower.entityName + chosenTower.placability + ", Selected Tile Placability: " + selectedTile.placability);
             return false;
         }
         

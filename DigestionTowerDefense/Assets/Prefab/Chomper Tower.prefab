@@ -71,6 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3852216045331283504}
+  - component: {fileID: 3539592562582029897}
   m_Layer: 0
   m_Name: Chomper Tower
   m_TagString: Untagged
@@ -96,6 +97,33 @@ Transform:
   - {fileID: 5401838409553348751}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3539592562582029897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220143850057882442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d213dec204812f23ab7d3d2c683e901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerScript
+  entityID: 0
+  entityName: Chomper
+  sprite: {fileID: 0}
+  maxHealth: 20
+  health: 20
+  attack: 5
+  armor: 3
+  nutrition: 20
+  factionID: 0
+  unitLevel: 0
+  isPiercing: 0
+  attackSpeed: 1
+  placability: 1
+  range: 2
+  refund: 10
 --- !u!1001 &7588601261457512053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,6 +132,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3852216045331283504}
     m_Modifications:
+    - target: {fileID: 4306660716144741736, guid: 1c3294a54b2273724bfb5fd3fb3081e5, type: 3}
+      propertyPath: attacker
+      value: 
+      objectReference: {fileID: 3539592562582029897}
     - target: {fileID: 5787011874419834344, guid: 1c3294a54b2273724bfb5fd3fb3081e5, type: 3}
       propertyPath: upperLimit
       value: 
