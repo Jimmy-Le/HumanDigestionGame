@@ -107,7 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7d6bf060a9d5c9ab7ef3d520f3ac73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScript
+  entityID: 0
   entityName: Dorito
+  sprite: {fileID: 0}
   maxHealth: 20
   health: 20
   attack: 1
@@ -116,6 +118,8 @@ MonoBehaviour:
   factionID: 1
   unitLevel: 0
   isPiercing: 0
+  element: Water
+  elementalBonus: 3
   hasEscaped: 0
 --- !u!61 &1635051129867372622
 BoxCollider2D:

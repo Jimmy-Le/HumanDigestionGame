@@ -1,11 +1,13 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyMovementScript : MonoBehaviour
 {
-    [SerializeField] public float speed = 2f;
-    [SerializeField] public float baseSpeed = 2f;
-    [SerializeField] public int direction = 0;  // 0: Right, 1: Down, 2: Left, 3: Up
-    [SerializeField] public bool isMoving = true;
+    [SerializeField] public float speed = 2f;               // Movement Speed
+    [SerializeField] public float baseSpeed = 2f;           // Base Movement Speed
+    [SerializeField] public int direction = 0;              // 0: Right, 1: Down, 2: Left, 3: Up
+    [SerializeField] public bool isMoving = true;           // If its moving, can be used for pausing
+    private Coroutine changeSpeedRoutine;                   // If multiple Scripts affecting the movespeed happens, the latest one will override
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,12 +40,37 @@ public class EnemyMovementScript : MonoBehaviour
     }
 
     /***
+     * This function is for external towers to slow or speed up enemies for a certain duration
+     * If it is already affected by a speed effect, it overrides it.
+     */
+    public void AffectSpeed(float strength, float duration)
+    {
+        if (changeSpeedRoutine != null)
+        {
+            StopCoroutine(changeSpeedRoutine);
+            speed = baseSpeed;
+        }
+        StartCoroutine(ChangeSpeed(strength, duration));
+        
+    }
+    /***
+     * Change the speed for a certain duration and reset it back to the base once it is over
+     */
+    public IEnumerator ChangeSpeed(float strength, float duration)
+    {
+        ModifySpeed(strength);
+        yield return new WaitForSeconds(duration);
+        ResetSpeed();
+    }
+    
+
+    /***
      * Adjust the speed of the enemy
      * Useful for towers that may inflict slows
      */
     public void ModifySpeed(float amount)
     {
-        speed += amount;
+        speed = Mathf.Max(0.1f, speed + amount);
     }
 
     /***
@@ -94,6 +121,10 @@ public class EnemyMovementScript : MonoBehaviour
         direction = (direction + 1) % 4;
     }
     
+    /***
+     * Set the direction of an enemy
+     * This is used when an enemy dies and potentially spawns a new enemy
+     */
     public void SetDirection(int direction)
     {
         this.direction = direction;

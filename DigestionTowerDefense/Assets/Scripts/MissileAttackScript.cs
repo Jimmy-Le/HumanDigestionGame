@@ -9,8 +9,9 @@ public class MissileAttackScript : AttackScript
 
 
     [SerializeField] public bool followOn = false;      // Toggle On if you want the projectile to follow the target
-    [SerializeField] public bool isMoving = false;
+    [SerializeField] public bool isMoving = false;      // If it is currently moving 
     [SerializeField] public float turnSpeed = 180f;     // Used for following targets
+    [SerializeField] public bool isPenetrating = false; // Lets the bullet pass through enemies
     
     [SerializeField] public Transform target;
     private Vector3 direction;
@@ -55,6 +56,22 @@ public class MissileAttackScript : AttackScript
 
         }
         
+    }
+    public override void OnTriggerEnter2D(Collider2D collision)
+    {
+        // If the attack touches a target (Entity), the target takes damage.
+        if (collision.gameObject.CompareTag(targetTag) && attackActive)
+        {
+            EntityScript targetScript = collision.gameObject.GetComponent<EntityScript>();
+            targetScript?.TakeDamage(attacker.GetAttack(), attacker.isPiercing, attacker.element);
+        }
+
+        if (!isPenetrating)
+        {
+            Destroy(this.gameObject);
+        }
+        
+
     }
     
     

@@ -107,6 +107,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileScript
   placability: 0
   isOccupied: 0
+  spriteRenderer: {fileID: 863034196556747092}
+  baseColor: {r: 0.7176471, g: 0.8666667, b: 0.99607843, a: 0.49019608}
+  glowColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!61 &6363513250073485002
 BoxCollider2D:
   m_ObjectHideFlags: 0

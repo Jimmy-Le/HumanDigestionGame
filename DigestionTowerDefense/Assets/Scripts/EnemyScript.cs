@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyScript : EntityScript
 {
-    public bool hasEscaped = false;
+    public bool hasEscaped = false;     // If an enemy has escaped (did not get killed)
     
 
     public override void Die()
@@ -16,6 +16,8 @@ public class EnemyScript : EntityScript
         // If there is no more levels
         if (nextEnemyLevel >= GameManager.instance.enemyTypes)
         {
+            GameManager.instance.ModifyNutrition(nutrition);
+            GameManager.instance.DecrementEnemiesLeft();
             Destroy(this.gameObject);
             return;
         }
@@ -31,9 +33,15 @@ public class EnemyScript : EntityScript
 
             if (randomChance <= 1)
             {
+                // Spawn a new enemy at the same location
                 int currentDirection = this.gameObject.GetComponent<EnemyMovementScript>().direction;
                 nextEnemy.GetComponent<EnemyMovementScript>().SetDirection(currentDirection);
-                Instantiate(nextEnemy, transform.position, transform.rotation);
+                
+                // Increment the amount of enemies left
+                GameManager.instance.IncrementEnemiesLeft();
+                GameObject newEnemy = Instantiate(nextEnemy, transform.position, transform.rotation);
+                newEnemy.SetActive(true);
+
             }
             
             // If it doesn't hit, it will be added to the next enemies list
@@ -48,8 +56,11 @@ public class EnemyScript : EntityScript
         {
 			nextEnemy.GetComponent<EntityScript>().SetMaxHealth(this.health);
             GameManager.instance.nextEnemies.Add(nextEnemy);
+            
         }
         
+        // Reduce the amount of enemies displayed
+        GameManager.instance.DecrementEnemiesLeft();
         Destroy(this.gameObject);
     }
     

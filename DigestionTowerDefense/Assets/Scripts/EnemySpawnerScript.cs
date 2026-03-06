@@ -5,10 +5,24 @@ using System.Collections;
 public class EnemySpawnerScript : MonoBehaviour
 {
     [SerializeField] public float spawnDelay = 1f;
+    [SerializeField] public int spawnDirection = 0;
+    [SerializeField] public bool isSpawning = false;
 
-    void Start()
+    // void Start()
+    // {
+    //     SpawnWave();
+    // }
+
+    void Update()
     {
-        SpawnWave();
+        if (GameManager.instance.spawnWave)
+        {
+            if (!isSpawning)
+            {
+                isSpawning = true;
+                SpawnWave();
+            }
+        }
     }
     
     public void SpawnWave()
@@ -23,8 +37,15 @@ public class EnemySpawnerScript : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             enemy.transform.position = this.transform.position;
+            enemy.GetComponent<EnemyMovementScript>().direction = spawnDirection;
             enemy.SetActive(true);
             yield return new WaitForSeconds(spawnDelay);
         }
+
+        GameManager.instance.SetSpawningStatusFalse();
+        isSpawning = false;
     }
+    
+
+    
 }

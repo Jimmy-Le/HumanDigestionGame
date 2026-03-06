@@ -11,7 +11,7 @@ public class TargettingScript : MonoBehaviour
     [SerializeField] public float searchCooldown = 0.2f;    // Searching Cooldown
     private Transform targettedObject;                      // The Transform of the Target
 
-    private float attackCooldown = 0f;
+    private float attackCooldown = 0f;                      // A timer that ticks down, representing the cooldown of an attack
 
     void Start()
     {

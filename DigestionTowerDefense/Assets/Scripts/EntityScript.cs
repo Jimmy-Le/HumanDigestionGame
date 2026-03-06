@@ -15,6 +15,8 @@ public abstract class EntityScript : MonoBehaviour
     [SerializeField] public int factionID;                  // 0: Towers, 1: Enemies
     [SerializeField] public int unitLevel;                  // Enemies: The type of enemy. Towers: Upgrades (This won't be implemented in this version)
     [SerializeField] public bool isPiercing;                // If an entity has Piercing, they can ignore armor when dealing dmg
+    [SerializeField] public string element;                 // Enemy's weakness, Tower's Damage Type
+    [SerializeField] public int elementalBonus = 3;         // Bonus Damage done if the element matches (or you can set it as a negative number to reduce dmg)
     
     protected virtual void Awake()
     {
@@ -24,10 +26,13 @@ public abstract class EntityScript : MonoBehaviour
     /***
      * This function will decrease the health of the entity and if it runs out of HP, it will call the Die() function
      */
-    public virtual void TakeDamage(int damage, bool pierce)
+    public virtual void TakeDamage(int damage, bool pierce, string element)
     {
+        // Calculate elemental dmg, if the attacker has no element, do 0 dmg
+        int elementalDmg = this.element == element && element != "" ? elementalBonus : 0;
+        
         // Calculate health to determine if the enemy will die first
-        health = health - Mathf.Max(0, (pierce ? damage : damage - armor));     // If the attack can pierce, it will ignore the armor. The attack cannot do negative damage.
+        health = health - Mathf.Max(0, (pierce ? damage + elementalDmg : damage + elementalDmg - armor));     // If the attack can pierce, it will ignore the armor. The attack cannot do negative damage.
 
         if (health <= 0)
         {
@@ -53,10 +58,22 @@ public abstract class EntityScript : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    /***
+     * This function will set the maxhealth to a new value
+     * This is used when an enemy escapes, it will set the max health to be whatever health it escaped with
+     */
 	public virtual void SetMaxHealth(int newMaxHealth)
 	{
 		maxHealth = newMaxHealth;
 	}
-    
+
+    /***
+     * This function will affect the armor of the entity forever (or not if you want to override it)
+     * This is used by acid attacks to reduce armor
+     */
+    public virtual void ModifyArmor(int amount)
+    {
+        armor += amount;
+    }
     
 }

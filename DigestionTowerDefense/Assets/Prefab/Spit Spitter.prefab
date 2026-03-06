@@ -116,6 +116,8 @@ MonoBehaviour:
   factionID: 0
   unitLevel: 0
   isPiercing: 1
+  element: Water
+  elementalBonus: 3
   attackSpeed: 2
   placability: 0
   range: 5

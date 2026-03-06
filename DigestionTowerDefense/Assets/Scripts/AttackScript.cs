@@ -20,7 +20,7 @@ public abstract class AttackScript : MonoBehaviour
         if (collision.gameObject.CompareTag(targetTag) && attackActive)
         {
             EntityScript targetScript = collision.gameObject.GetComponent<EntityScript>();
-            targetScript?.TakeDamage(attacker.GetAttack(), attacker.isPiercing);
+            targetScript?.TakeDamage(attacker.GetAttack(), attacker.isPiercing, attacker.element);
         }
 
         Destroy(this.gameObject);
@@ -32,7 +32,8 @@ public abstract class AttackScript : MonoBehaviour
         if (collision.gameObject.CompareTag(targetTag) && attackActive)
         {
             EntityScript targetScript = collision.gameObject.GetComponent<EntityScript>();
-            targetScript?.TakeDamage(attacker.GetAttack(), attacker.isPiercing);
+            targetScript?.TakeDamage(attacker.GetAttack(), attacker.isPiercing, attacker.element);
         }																                                            
     }
+    
 }

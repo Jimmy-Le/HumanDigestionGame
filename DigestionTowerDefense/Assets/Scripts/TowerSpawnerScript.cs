@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class TowerSpawnerScript : MonoBehaviour
 {
     [SerializeField] public InputActionAsset inputActions;
-    [SerializeField] public LayerMask targetLayer = 9; // Tile Layer
+    [SerializeField] public LayerMask targetLayer = 9;      // Tile Layer
     [SerializeField] private Camera cam;
 
     [SerializeField] private TileScript selectedTile;
@@ -51,6 +51,9 @@ public class TowerSpawnerScript : MonoBehaviour
         return;
     }
     
+    /***
+     * This function will try to build a tower on the clicked tile
+     */
     public void BuildTower()
     {
         // For now it won't do anything, but can be useful to open up a menu to sell or upgrade
@@ -76,6 +79,9 @@ public class TowerSpawnerScript : MonoBehaviour
         }
     }
     
+    /***
+     * This function checks if the tower can be built here
+     */
     public virtual bool CanBuild()
     {
         
